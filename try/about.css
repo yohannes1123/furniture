@@ -1,0 +1,78 @@
+/* Sidebar Menu */
+#nav-links {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: -250px;  /* Initially off the screen */
+    height: 100%;
+    width: 250px;
+    background-color: #004d40; /* Dark green color for the sidebar */
+    padding-top: 60px;
+    transition: left 0.3s ease;  /* Smooth sliding effect */
+    z-index: 1; /* Make sure the sidebar is above the content */
+}
+
+/* Ensures the main content moves to the right when the sidebar is opened */
+body.sidebar-active {
+    transform: translateX(250px);
+    transition: transform 0.3s ease; 
+}
+
+#nav-links li {
+    margin: 20px 0;
+    text-align: center;
+}
+
+#nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    display: block;
+    padding: 10px 0;
+}
+
+#nav-links.active {
+    left: 0;  /* Moves the sidebar into view */
+}
+
+/* Hamburger Menu Styling */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.hamburger .bar {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 4px 0;
+    transition: 0.3s;
+}
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    #nav-links {
+        display: flex;
+        left: -250px; /* Hidden offscreen initially */
+    }
+
+    #nav-links.active {
+        left: 0; /* Slide the sidebar into view */
+    }
+}
+
+/* To ensure the close button works */
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+}
